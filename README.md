@@ -196,41 +196,6 @@ Como usuario, quiero poder eliminar un libro del sistema para mantener actualiza
 2. Confirmar la eliminación en la página de confirmación
 3. Hacer clic en "Eliminar Libro"
 
-## 🔧 Configuración del Proyecto
-
-### **Archivo settings.py**
-```python
-# Configuraciones principales
-LANGUAGE_CODE = 'es-es'
-TIME_ZONE = 'America/Mexico_City'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# Aplicaciones instaladas
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'corsheaders',
-    'libros',
-]
-```
-
-### **Modelo Libro**
-```python
-class Libro(models.Model):
-    titulo = models.CharField(max_length=200, verbose_name="Título")
-    autor = models.CharField(max_length=200, verbose_name="Autor")
-    genero = models.CharField(max_length=50, choices=GENERO_CHOICES)
-    fecha_publicacion = models.DateField(verbose_name="Fecha de Publicación")
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-    fecha_actualizacion = models.DateTimeField(auto_now=True)
-```
-
 ## 🎨 Géneros Disponibles
 
 El sistema incluye los siguientes géneros literarios:
@@ -286,58 +251,6 @@ curl -X POST http://localhost:8000/api/libros/ \
 - Opciones predefinidas para género
 - Fechas automáticas de creación y actualización
 
-## 🎯 Características Especiales
 
-### **Interfaz Sin JavaScript**
-- **Formularios puros de Django**
-- **Búsqueda y filtros con recarga de página**
-- **Confirmaciones mediante formularios HTML**
-- **Navegación tradicional con enlaces**
-
-### **Diseño Responsivo**
-- **Adaptable a móviles, tablets y desktop**
-- **Bootstrap 5 para componentes modernos**
-- **CSS personalizado para estilos únicos**
-- **Iconos Font Awesome para mejor UX**
-
-### **Estadísticas Automáticas**
-- **Total de libros en la biblioteca**
-- **Número de géneros únicos**
-- **Libros publicados en el año actual**
-- **Distribución por género**
-
-## 🔒 Seguridad
-
-- **Validación de formularios** en frontend y backend
-- **Protección CSRF** habilitada
-- **Sanitización de datos** automática
-- **Validación de fechas** para evitar fechas futuras
-
-## 📊 Base de Datos
-
-### **Tabla Libro**
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| id | AutoField | Identificador único |
-| titulo | CharField | Título del libro |
-| autor | CharField | Autor del libro |
-| genero | CharField | Género literario |
-| fecha_publicacion | DateField | Fecha de publicación |
-| fecha_creacion | DateTimeField | Fecha de creación en BD |
-| fecha_actualizacion | DateTimeField | Última actualización |
-
-## 🚀 Script de Inicio Rápido
-
-Para facilitar el inicio del proyecto, puedes usar:
-
-```bash
-# Windows (PowerShell)
-.\venv\Scripts\Activate.ps1
-python manage.py runserver
-
-# Linux/Mac
-source venv/bin/activate
-python manage.py runserver
-```
 
 
