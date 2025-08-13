@@ -130,6 +130,49 @@ Una vez ejecutado el servidor, puedes acceder a:
 - **Admin Django**: http://localhost:8000/admin
 - **API REST**: http://localhost:8000/api/libros/
 
+### Historia de Usuario 1: Agregar libro
+
+Como usuario, quiero poder agregar un nuevo libro a la biblioteca, para tener un registro actualizado de los libros disponibles.
+
+**criterios de aceptacion** 
+- El formulario de creación de libro debe estar disponible desde la página principal.
+- Todos los campos obligatorios del modelo Libro deben estar presentes en el formulario.
+- El título debe visualizarse claramente y ser fácil de identificar.
+- Debe existir un campo de búsqueda que permita filtrar libros por título.
+- Si no hay libros registrados, la lista debe mostrar un mensaje indicándolo.
+
+### Historia de Usuario 2: Libros registrados
+
+Como usuario, quiero ver la lista de todos los libros registrados, para consultar fácilmente la información de cada libro.
+
+**Criterios de aceptacion** 
+- El nombre del autor debe visualizarse claramente junto al título del libro.
+- La lista se actualiza automáticamente al agregar, editar o eliminar un libro.
+- Cada libro muestra los campos principales definidos.
+
+### Historia de Usuario 3: Actualizar informacion de libro
+
+Como usuario, quiero editar la información de un libro existente, para corregir errores o actualizar datos.
+
+**Criterios de aceptacion**
+- Desde la lista de libros (index.html), existe un botón o enlace para editar cada libro.
+- Al guardar los cambios, la información se actualiza en la base de datos y en la lista.
+- Si los datos son inválidos, se muestra un mensaje de error.
+  
+### Historia de Usuario 4: Eliminar un libro
+
+Como usuario, quiero poder eliminar un libro del sistema para mantener actualizada y limpio la base de datos.
+
+**Criterios de aceptacion** 
+
+- El sistema debe permitir seleccionar un libro y eliminarlo de la lista.
+- Antes de eliminar, debe pedirse una confirmación para evitar eliminaciones accidentales.
+- Desde la lista de libros (index.html), existe un botón o enlace para eliminar cada libro.
+- El libro eliminado no debe aparecer en la lista después de la confirmación.
+- Si se intenta eliminar un libro que ya no existe, debe mostrarse un mensaje de error.
+- Al confirmar, el libro se elimina de la base de datos y desaparece de la lista.
+- Si se cancela, no se realiza ningún cambio.
+  
 ## 📖 Uso del Sistema
 
 ### **Página Principal**
@@ -296,14 +339,5 @@ python manage.py runserver
 source venv/bin/activate
 python manage.py runserver
 ```
-
-## 📞 Soporte
-
-Si encuentras algún problema o tienes preguntas:
-
-1. **Verificar que el entorno virtual esté activado**
-2. **Confirmar que todas las dependencias estén instaladas**
-3. **Revisar que las migraciones se hayan aplicado**
-4. **Verificar que el servidor esté ejecutándose en el puerto correcto**
 
 
