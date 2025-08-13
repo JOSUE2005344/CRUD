@@ -1,6 +1,14 @@
-# 📚 Sistema de Gestión de Libros CRUD
+# grupo 5 MB5 - CRUD/Gestion de libros 
 
-Un sistema completo de gestión de libros desarrollado con **Django**, que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de libros con una interfaz web moderna y responsiva.
+## 🎯 Product Backlog
+Desarrollar un sistema de gestion de libros que permita: 
+- Agregar libros
+- Poder ver los libros registrados
+- Actualizar la informacion de libros previamente registrados
+- Eliminar libros registrados
+
+## 🎯 Sprint Goal
+Entregar un CRUD funcional de gestión de libros con operaciones de agregar, listar, actualizar y eliminar, cumpliendo con criterios de aceptación y documentado con Scrum.
 
 ## 👥 Roles Scrum
 | Rol            | Integrante           | Función principal                                                                                                 |
@@ -298,10 +306,4 @@ Si encuentras algún problema o tienes preguntas:
 3. **Revisar que las migraciones se hayan aplicado**
 4. **Verificar que el servidor esté ejecutándose en el puerto correcto**
 
-## 🎉 ¡Proyecto Completado!
 
-Este sistema de gestión de libros está completamente funcional y listo para usar. Incluye todas las operaciones CRUD básicas, una interfaz moderna y responsiva, y una API REST completa para integraciones futuras.
-
----
-
-**Desarrollado con ❤️ usando Django**
