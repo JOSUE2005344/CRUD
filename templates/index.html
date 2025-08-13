@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Libros - CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <i class="fas fa-book-open me-2"></i>
+                Gestión de Libros
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    <i class="fas fa-user me-1"></i>
+                    Sistema CRUD Django
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="main-container">
+            <!-- Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-triangle{% else %}info-circle{% endif %} me-2"></i>
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- Header -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h1 class="display-6 fw-bold text-dark mb-2">
+                        <i class="fas fa-books me-2"></i>
+                        Biblioteca Digital
+                    </h1>
+                    <p class="text-muted">Sistema completo de gestión de libros con Django</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{% url 'crear_libro' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>
+                        Nuevo Libro
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <i class="fas fa-book fa-2x mb-2"></i>
+                        <h4>{{ total_libros }}</h4>
+                        <p class="mb-0">Total de Libros</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <i class="fas fa-tags fa-2x mb-2"></i>
+                        <h4>{{ total_generos }}</h4>
+                        <p class="mb-0">Géneros Únicos</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-card">
+                        <i class="fas fa-calendar fa-2x mb-2"></i>
+                        <h4>{{ libros_este_ano }}</h4>
+                        <p class="mb-0">Libros Este Año</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="search-box">
+                <form method="get" action="{% url 'index' %}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                {{ busqueda_form.search }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            {{ busqueda_form.genero }}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="d-flex gap-2">
+                                {{ busqueda_form.ordering }}
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <a href="{% url 'index' %}" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Books Table -->
+            {% if libros %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Género</th>
+                                <th>Fecha Publicación</th>
+                                <th>Fecha Creación</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for libro in libros %}
+                                <tr>
+                                    <td><span class="badge bg-secondary">{{ libro.id }}</span></td>
+                                    <td><strong>{{ libro.titulo }}</strong></td>
+                                    <td>{{ libro.autor }}</td>
+                                    <td><span class="badge bg-info">{{ libro.get_genero_display }}</span></td>
+                                    <td>{{ libro.fecha_publicacion|date:"d/m/Y" }}</td>
+                                    <td>{{ libro.fecha_creacion|date:"d/m/Y H:i" }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'editar_libro' libro.id %}" class="btn btn-warning btn-sm" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="{% url 'eliminar_libro' libro.id %}" class="btn btn-danger btn-sm" title="Eliminar">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <!-- Empty State -->
+                <div class="empty-state">
+                    <i class="fas fa-books"></i>
+                    <h4>No hay libros registrados</h4>
+                    <p>Comienza agregando tu primer libro usando el botón "Nuevo Libro"</p>
+                    <a href="{% url 'crear_libro' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>
+                        Agregar Primer Libro
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

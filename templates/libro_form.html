@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - Gestión de Libros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <i class="fas fa-book-open me-2"></i>
+                Gestión de Libros
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    <i class="fas fa-user me-1"></i>
+                    Sistema CRUD Django
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="main-container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2 class="mb-0">
+                    <i class="fas fa-{% if accion == 'Crear' %}plus{% else %}edit{% endif %} me-2"></i>
+                    {{ titulo }}
+                </h2>
+                <p class="mb-0 mt-2 opacity-75">
+                    {% if accion == 'Crear' %}
+                        Completa el formulario para agregar un nuevo libro
+                    {% else %}
+                        Modifica la información del libro
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.titulo.id_for_label }}" class="form-label">
+                                <i class="fas fa-heading me-1"></i>
+                                {{ form.titulo.label }} *
+                            </label>
+                            {{ form.titulo }}
+                            {% if form.titulo.errors %}
+                                <div class="text-danger mt-1">
+                                    {% for error in form.titulo.errors %}
+                                        <small><i class="fas fa-exclamation-triangle me-1"></i>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.autor.id_for_label }}" class="form-label">
+                                <i class="fas fa-user me-1"></i>
+                                {{ form.autor.label }} *
+                            </label>
+                            {{ form.autor }}
+                            {% if form.autor.errors %}
+                                <div class="text-danger mt-1">
+                                    {% for error in form.autor.errors %}
+                                        <small><i class="fas fa-exclamation-triangle me-1"></i>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.genero.id_for_label }}" class="form-label">
+                                <i class="fas fa-tag me-1"></i>
+                                {{ form.genero.label }} *
+                            </label>
+                            {{ form.genero }}
+                            {% if form.genero.errors %}
+                                <div class="text-danger mt-1">
+                                    {% for error in form.genero.errors %}
+                                        <small><i class="fas fa-exclamation-triangle me-1"></i>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.fecha_publicacion.id_for_label }}" class="form-label">
+                                <i class="fas fa-calendar me-1"></i>
+                                {{ form.fecha_publicacion.label }} *
+                            </label>
+                            {{ form.fecha_publicacion }}
+                            {% if form.fecha_publicacion.errors %}
+                                <div class="text-danger mt-1">
+                                    {% for error in form.fecha_publicacion.errors %}
+                                        <small><i class="fas fa-exclamation-triangle me-1"></i>{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Form Errors -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Form Actions -->
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <a href="{% url 'index' %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Volver
+                        </a>
+                        
+                        <div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>
+                                {{ accion }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
