@@ -177,6 +177,10 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     margin-bottom: 30px;
 }
+.search-box .d-flex.gap-2 {
+    margin-left: 63px; /* Ajusta este valor para que se vea más centrado */
+}
+
 
 .stats-card {
     background: linear-gradient(45deg, #667eea, #764ba2);
@@ -273,3 +277,6 @@ body {
         padding: 20px;
     }
 }
+
+
+
