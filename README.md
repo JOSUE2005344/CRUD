@@ -17,7 +17,9 @@ Entregar un CRUD funcional de gestión de libros con operaciones de agregar, lis
 | Product Owner  | Gianluca Revilla     | Define Historias de usuario, prioriza funcionalidades y establece las metas del proyecto.                        |
 | Developer 1    | Matias Sicha      | Desarrolla la estructura de las plantillas HTML para la interfaz de usuario.                                     |
 | Developer 2    | Mattias Muruguza      | Diseña y desarrolla los estilos CSS personalizados en la carpeta static/css.                                     |
-| Developer 3    | INTEGRANTE 5  | Se encarga de la creación y configuración del proyecto Django, así como de la lógica principal del backend.      |
+| Developer 3    | Fabián Espinoza | Se encarga de la creación y configuración del proyecto Django, así como de la lógica principal del backend.      |
+| Developer 4    | Josue Castillo  | Diseña y desarrolla los estilos CSS personalizados en la carpeta static/css.                                     |
+| Developer 5    | Rodrigo Guerra | Se encarga de la creación y configuración del proyecto Django, así como de la lógica principal del backend.      |
 
 ## 🎯 Características Principales
 
