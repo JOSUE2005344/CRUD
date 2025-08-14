@@ -13,10 +13,10 @@ Entregar un CRUD funcional de gestión de libros con operaciones de agregar, lis
 ## 👥 Roles Scrum
 | Rol            | Integrante           | Función principal                                                                                                 |
 |----------------|---------------------|------------------------------------------------------------------------------------------------------------------|
-| Scrum Master   | INTEGRANTE 1    | Facilita el proceso Scrum, elimina impedimentos y asegura que el equipo siga los principios ágiles.              |
+| Scrum Master   | Carlos Gago   | Facilita el proceso Scrum, elimina impedimentos y asegura que el equipo siga los principios ágiles.              |
 | Product Owner  | Gianluca Revilla     | Define Historias de usuario, prioriza funcionalidades y establece las metas del proyecto.                        |
-| Developer 1    | INTEGRANTE 3       | Desarrolla la estructura de las plantillas HTML para la interfaz de usuario.                                     |
-| Developer 2    | INTEGRANTE 4      | Diseña y desarrolla los estilos CSS personalizados en la carpeta static/css.                                     |
+| Developer 1    | Matias Sicha      | Desarrolla la estructura de las plantillas HTML para la interfaz de usuario.                                     |
+| Developer 2    | Mattias Muruguza      | Diseña y desarrolla los estilos CSS personalizados en la carpeta static/css.                                     |
 | Developer 3    | INTEGRANTE 5  | Se encarga de la creación y configuración del proyecto Django, así como de la lógica principal del backend.      |
 
 ## 🎯 Características Principales
