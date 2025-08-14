@@ -8,15 +8,17 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 4
       matrix:
-        python-version: [3.10] # Solo una versión para evitar errores y ser más rápido
+        python-version: [3.9, 3.10, 3.11] # ✅ versiones soportadas
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
